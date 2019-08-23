@@ -70,12 +70,20 @@ const demoStyles = {
   left: {
     flex: 1,
     ...containerCol,
+  },
+  leftBottom: {
+    flex: 1,
+    overflow: 'auto',
+  },
+  nestedHeader: {
+    padding: 8,
   }
 }
 
 //<div class="container column full-height">
 //<div class="grow container row" id="middle">
 //<div class="grow container column" id="left">
+//<div class="item grow overflow" id="left-bottom">
 const Demo = withStyles(demoStyles)(({classes}) => {
   return (
 <Grid container direction="column" className={classes.fullHeight}>
@@ -88,10 +96,10 @@ const Demo = withStyles(demoStyles)(({classes}) => {
         <div class="item" id="left-top">
             left-top
         </div>
-        <div class="item grow overflow" id="left-bottom">
+        <Grid item className={classes.leftBottom}>
+          <div className={classes.nestedHeader}>test row</div>
           <LoremIpsum />
-          {/* <span>test</span> */}
-        </div>
+        </Grid>
     </Grid>
     <div class="item grow" id="right">
         right
@@ -104,6 +112,7 @@ const Demo = withStyles(demoStyles)(({classes}) => {
 </Grid>
   )
 })
+//</div>
 //</div>
 //</div>
 //</div>
