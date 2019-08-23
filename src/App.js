@@ -48,17 +48,34 @@ let theme = createMuiTheme({
 });
 window.theme = theme;
 
+const containerRow = {
+  'min-height': 0,
+}
+
+const containerCol = {
+  'min-width': 0,
+}
+
 const demoStyles = {
   fullHeight: {
     height: '100%',
-    // 'flex-wrap': 'nowrap',
+    'flex-wrap': 'nowrap',
+    ...containerCol,
   },
-  row: {
-    'min-height': 0,
+  middle: {
+    flex: 1,
+    'flex-wrap': 'nowrap',
+    ...containerRow,
+  },
+  left: {
+    flex: 1,
+    ...containerCol,
   }
 }
 
 //<div class="container column full-height">
+//<div class="grow container row" id="middle">
+//<div class="grow container column" id="left">
 const Demo = withStyles(demoStyles)(({classes}) => {
   return (
 <Grid container direction="column" className={classes.fullHeight}>
@@ -66,9 +83,8 @@ const Demo = withStyles(demoStyles)(({classes}) => {
     top - covered by Header
 </div>
 
-  {/* <Grid container direction="row" className={classes.row}> */}
-  <div class="grow container row" id="middle">
-    <div class="grow container column" id="left">
+  <Grid container direction="row" className={classes.middle}>
+    <Grid container direction="column" className={classes.left}>
         <div class="item" id="left-top">
             left-top
         </div>
@@ -76,11 +92,11 @@ const Demo = withStyles(demoStyles)(({classes}) => {
           <LoremIpsum />
           {/* <span>test</span> */}
         </div>
-    </div>
+    </Grid>
     <div class="item grow" id="right">
         right
     </div>
-  {/* </Grid> */}</div>
+  </Grid>
 
 <div class="item" id="footer">
     footer
@@ -88,6 +104,8 @@ const Demo = withStyles(demoStyles)(({classes}) => {
 </Grid>
   )
 })
+//</div>
+//</div>
 //</div>
 
 function App() {
