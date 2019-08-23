@@ -9,7 +9,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
-// import Header from './components/Header';
+import Header from './components/Header';
 
 const bodyStyles = theme => ({
     root: {
@@ -31,7 +31,7 @@ const Layout = ({children}) => {
   return (
 <Fragment>
     <CssBaseline />
-    {/* <Header /> */}
+    <Header />
     <BodyWrap>
         {children}
     </BodyWrap>
