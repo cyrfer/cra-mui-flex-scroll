@@ -37,7 +37,10 @@ body,
     flex: 1;
 }
 
-#top,
+#top {
+    flex-basis: 64px;
+}
+
 #footer,
 #left-top {
     flex-basis: 100px;

@@ -9,6 +9,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
+import Grid from '@material-ui/core/Grid';
 import Header from './components/Header';
 
 const bodyStyles = theme => ({
@@ -47,16 +48,26 @@ let theme = createMuiTheme({
 });
 window.theme = theme;
 
+const demoStyles = {
+  fullHeight: {
+    height: '100%',
+    // 'flex-wrap': 'nowrap',
+  },
+  row: {
+    'min-height': 0,
+  }
+}
 
-const Demo = () => {
+//<div class="container column full-height">
+const Demo = withStyles(demoStyles)(({classes}) => {
   return (
-<div class="container column full-height">
-
+<Grid container direction="column" className={classes.fullHeight}>
 <div class="item" id="top">
-    top
+    top - covered by Header
 </div>
 
-<div class="grow container row" id="middle">
+  {/* <Grid container direction="row" className={classes.row}> */}
+  <div class="grow container row" id="middle">
     <div class="grow container column" id="left">
         <div class="item" id="left-top">
             left-top
@@ -69,14 +80,15 @@ const Demo = () => {
     <div class="item grow" id="right">
         right
     </div>
-</div>
+  {/* </Grid> */}</div>
 
 <div class="item" id="footer">
     footer
 </div>
-</div>
+</Grid>
   )
-}
+})
+//</div>
 
 function App() {
   return (
